@@ -597,6 +597,7 @@ export default class TableTrick {
       // remove colspan and rowspan attributes
       cell.removeAttribute('colspan');
       cell.removeAttribute('rowspan');
+      cell.innerHTML = cell.innerHTML; // trigger quill update delta
       // register changes to history
       TableHistory.register('split', { node: cell, mergedNodes, colSpan, rowSpan, oldContent: cell.innerHTML, newContent: cell.innerHTML });
       return true;
