@@ -369,7 +369,7 @@ export default class TableTrick {
         const tr = td.parent;
         manageMergedCells(tr.domNode);
         TableHistory.register('remove', { node: tr.domNode, nextNode: tr.next ? tr.next.domNode : null, parentNode: tr.parent.domNode });
-        const _tr = Parchment.find(tr);
+        const _tr = Parchment.find(tr.domNode);
         if (_tr) { // remove node this way in order to update delta
           _tr.remove();
         }
