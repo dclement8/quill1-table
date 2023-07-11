@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.6.5] - 2023-07-11
+- Fix remove row function not working if cursor is in cell <https://github.com/dclement8/quill1-table/pull/10> by [@cfonseca88](https://github.com/cfonseca88)
+- Fix quill delta in text-change event during split cell <https://github.com/dclement8/quill1-table/pull/9> by [@vtejuf](https://github.com/vtejuf)
+- Update quill-delta, webpack-cli dev dependency
+
 ## [1.6.4] - 2023-01-23
 - Manage th, empty td and td without p <https://github.com/dclement8/quill1-table/issues/7>
 
@@ -40,7 +45,8 @@ All notable changes to this project will be documented in this file.
 - TableHistory.undo and TableHistory.redo need quill instance as first argument (and change id as second argument)
 - TableSelection.mouseDown, TableSelection.mouseMove, TableSelection.mouseUp and TableSelection.selectionChange need quill instance as first argument
 
-[Unreleased]: https://github.com/dclement8/quill1-table/compare/1.6.4...HEAD
+[Unreleased]: https://github.com/dclement8/quill1-table/compare/1.6.5...HEAD
+[1.6.5]: https://github.com/dclement8/quill1-table/compare/1.6.4...1.6.5
 [1.6.4]: https://github.com/dclement8/quill1-table/compare/1.6.3...1.6.4
 [1.6.3]: https://github.com/dclement8/quill1-table/compare/1.6.2...1.6.3
 [1.6.2]: https://github.com/dclement8/quill1-table/compare/1.6.1...1.6.2
