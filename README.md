@@ -1,21 +1,31 @@
 # QuillJS Table (quill1-table)
 
+<p>
+  <a href="https://npmjs.com/package/quill1-table" title="Version">
+    <img src="https://img.shields.io/npm/v/quill1-table.svg" alt="Version">
+  </a>
+  <a href="https://npmjs.com/package/quill1-table" title="Downloads">
+    <img src="https://img.shields.io/npm/dm/quill1-table.svg" alt="Downloads">
+  </a>
+</p>
+
 `TABLE` functionality in QuillJS (v1) using Containers.
 
 Code of quill is included in project so we can easily play with it in our tests.
 
-## What the previous developers fixed
+## Features
 
-* Denied Backspace inside an empty cell
-* Added ability to delete a table
+* Add or remove a table/column/row/cell
 * ctrl+z/ctrl+shift+z (undo/redo)
 * select a cell or multiple cells
-* split/merge cell feature
-* remove cell/selection feature
-* copy/paste a table and managed merged cells
+* split/merge cell
+* remove cell/selection
+* copy/paste a table
 * add col/row before/after
-
-## What would be nice to add/fix
+* copy & paste table from Word
+* tabbing between cells
+* select all cell content
+* cell selection on click or with CTRL key
 
 ## Usage
 
@@ -95,25 +105,13 @@ modules: {
 }
 ```
 
+## Changelog
+
+see [CHANGELOG.md](../master/CHANGELOG.md)
+
 ### For development
 ```shell script
 npm install
 
 npm run build
 ```
-
-### Progress so far
-* `TABLE`, `TR` and `TD` are containers - it is possible to have multiple block blots in `TD`.
-* all tables, rows and cells are identified by random strings and optimize merge only those with the same id.
-* It is possible to add tables by defining rows and cols count in grid.
-* It is possible to add rows and columns to existing tables (accessible by buttons in toolbar).
-* it is possible to copy & paste table from Word. Works ok. Needs to test edge cases.
-* undo/redo. Needs to test edge cases.
-* select a cell or multiple cells
-* split/merge cell feature
-* remove cell/selection feature
-* copy/paste a table and managed merged cells
-* add col/row before/after
-* Tabbing between cells
-* select all cell content
-* cell selection on click or with CTRL key
