@@ -389,13 +389,12 @@ export default class TableTrick {
       td = Parchment.find(_td);
     }
 
-    const oldDelta = quill.getContents();
     if (td && TableTrick._split(td.domNode)) {
       // add changes to history
       // TableTrick._split already register 'split' change to history
       TableSelection.selectionStartElement = TableSelection.selectionEndElement = null;
       // force triggering text-change event
-      TableTrick.emitTextChange(quill, oldDelta);
+      td.domNode.innerHTML = td.domNode.innerHTML;
       TableHistory.add(quill);
     }
   }
