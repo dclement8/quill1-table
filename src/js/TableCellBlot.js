@@ -8,20 +8,22 @@ const Parchment = Quill.import('parchment');
 
 class TableCell extends ContainBlot {
   static create(value) {
-    const tagName = 'td';
-    let node = super.create(tagName);
-    let ids = value.split('|');
-    node.setAttribute('table_id', ids[0]);
-    node.setAttribute('row_id', ids[1]);
-    node.setAttribute('cell_id', ids[2]);
-    if (ids[3]) {
-      node.setAttribute('merge_id', ids[3]);
+    let node = super.create();
+    let atts = value.split('|');
+    node.setAttribute('table_id', atts[0]);
+    node.setAttribute('row_id', atts[1]);
+    node.setAttribute('cell_id', atts[2]);
+    if (atts[3]) {
+      node.setAttribute('merge_id', atts[3]);
     }
-    if (ids[4]) {
-      node.setAttribute('colspan', ids[4]);
+    if (atts[4]) {
+      node.setAttribute('colspan', atts[4]);
     }
-    if (ids[5]) {
-      node.setAttribute('rowspan', ids[5]);
+    if (atts[5]) {
+      node.setAttribute('rowspan', atts[5]);
+    }
+    if(atts[6]){
+      node.setAttribute('hide_border', atts[6]);
     }
     return node;
   }
@@ -38,7 +40,8 @@ class TableCell extends ContainBlot {
           this.domNode.getAttribute('cell_id'),
           this.domNode.getAttribute('merge_id'),
           this.domNode.getAttribute('colspan'),
-          this.domNode.getAttribute('rowspan')
+          this.domNode.getAttribute('rowspan'),
+          this.domNode.getAttribute('hide_border') //is the hide class present in the table.. index.js 116, TD cell matcher
         ].join('|')
     }
   }
@@ -56,7 +59,8 @@ class TableCell extends ContainBlot {
         // we will mark td position, put in table and replace mark
         let mark = Parchment.create('block');
         this.parent.insertBefore(mark, this.next);
-        let table = Parchment.create('table', this.domNode.getAttribute('table_id'));
+        let table = Parchment.create('table', this.domNode.getAttribute('table_id') + '|' + this.domNode.getAttribute('hide_border'));
+        this.domNode.removeAttribute('hide_border'); //no longer need this once we set it in the table, since blots created from cell to table. 
         let tr = Parchment.create('tr', this.domNode.getAttribute('row_id'));
         table.appendChild(tr);
         tr.appendChild(this);

@@ -15,6 +15,7 @@ export default class TableTrick {
     static removeSelection(quill: any): void;
     static _removeCell(cell: any, recursive?: boolean): boolean;
     static _split(cell: any): boolean;
+    static borderToggle(quill: any, hide:boolean): void;
     static emitTextChange(quill: any, oldDelta: any, source?: string): void;
     static table_handler(value: any, quill: any): boolean;
 }

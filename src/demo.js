@@ -29,6 +29,8 @@ const defaultToolbar = [
         'merge-selection',
         'remove-cell',
         'remove-selection',
+        'hide-border',
+        'show-border',
         'undo',
         'redo'
       ]

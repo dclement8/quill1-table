@@ -190,7 +190,7 @@ class TableHistory {
   static propertyChange(change, revert) {
     const { node, property, oldValue, newValue } = change;
     const value = revert ? oldValue : newValue;
-    if (value !== null) {
+    if (value) {
       node.setAttribute(property, value);
     } else {
       node.removeAttribute(property);

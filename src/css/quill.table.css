@@ -14,6 +14,10 @@
   white-space: pre-wrap; /* https://github.com/quilljs/quill/issues/1760 */
 }
 
+.ql-editor__table--hideBorder td {
+  border: none !important;
+}
+
 .ql-editor table td[rowspan="2"] {
   height: 50px;
 }
@@ -146,6 +150,14 @@
 
 .ql-picker-item[data-value="remove-table"]:before {
   content: "Remove table";
+}
+
+.ql-picker-item[data-value="hide-border"]::after {
+  content: "Hide Border";
+}
+
+.ql-picker-item[data-value="show-border"]::after {
+  content: "Show Border";
 }
 
 .ql-table:nth-of-type(1),

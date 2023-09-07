@@ -1,10 +1,12 @@
 import Quill from 'quill';
 import TableHistory from './TableHistory';
 import TableSelection from './TableSelection';
+import TableToolbar from './TableToolbar';
 
 const Parchment = Quill.import('parchment');
 const Container = Quill.import('blots/container');
 const Scroll = Quill.import('blots/scroll');
+export const hiddenBorderClassName = 'ql-editor__table--hideBorder';
 
 export default class TableTrick {
   static random_id() {
@@ -608,6 +610,28 @@ export default class TableTrick {
     quill.emitter.emit('text-change', oldDelta.diff(newDelta), oldDelta, source);
   }
 
+  static borderToggle(quill, hide) {
+    const table = TableSelection.selectionStartElement?.closest('table') ||
+      (TableTrick.find_td(quill)?.domNode.closest('table')) ||
+      null;
+  
+    if (!table) return;
+  
+    const prevClassList = Array.from(table.classList).join(' ');
+    hide ? table.classList.add(hiddenBorderClassName) : table.classList.remove(hiddenBorderClassName);
+  
+    TableToolbar.disable(quill, hide ? ['hide-border'] : ['show-border']);
+    TableToolbar.enable(quill, hide ? ['show-border'] : ['hide-border']);
+    
+    TableHistory.register('propertyChange', {
+      node: table,
+      property: 'class',
+      oldValue: prevClassList,
+      newValue: Array.from(table.classList).join(' '),
+    });
+    TableHistory.add(quill);
+  }
+
   static table_handler(value, quill) {
     // Check if the selection is for the same Quill instance, otherwise reset selection
     if (
@@ -661,6 +685,12 @@ export default class TableTrick {
           break;
         case 'remove-selection':
           TableTrick.removeSelection(quill);
+          break;
+        case 'hide-border':
+          TableTrick.borderToggle(quill, true);
+          break;
+        case 'show-border':
+          TableTrick.borderToggle(quill, false);
           break;
         case 'undo':
           if (quill.history.stack.undo.length) {
