@@ -1,4 +1,5 @@
 import TableToolbar from './TableToolbar';
+import { hiddenBorderClassName } from './TableTrick';
 
 class TableSelection {
   static focusedCell = null;
@@ -108,7 +109,9 @@ class TableSelection {
     if (TableSelection.selectionStartElement || TableSelection.selectionEndElement) {
       // there is a table selection
       isInTable = true;
-      TableToolbar.enable(quill, ['split-cell', 'merge-selection', 'remove-selection']);
+      TableToolbar.enable(quill, ['split-cell', 'merge-selection', 'remove-selection', TableSelection.selectionStartElement.closest('table').classList.contains(hiddenBorderClassName)?'show-border':'hide-border'] );
+      //disable selection based on hidden class
+      TableToolbar.disable(quill, !TableSelection.selectionStartElement.closest('table').classList.contains(hiddenBorderClassName)?'show-border':'hide-border'); 
     } else {
       // Text selection
       TableToolbar.disable(quill, ['split-cell', 'merge-selection', 'remove-selection']);

@@ -3,6 +3,7 @@ import TableTrick from './TableTrick';
 import TableRow from './TableRowBlot';
 import TableHistory from './TableHistory';
 import ContainBlot from './ContainBlot';
+import { hiddenBorderClassName } from './TableTrick';
 
 const Parchment = Quill.import('parchment');
 
@@ -10,8 +11,12 @@ class Table extends ContainBlot {
   static create(value) {
     const tagName = 'table';
     let node = super.create(tagName);
-    node.setAttribute('table_id', value ? value : TableTrick.random_id());
-    return node;
+    let atts = value.split('|');
+    node.setAttribute('table_id', atts[0]);
+    if (atts[1] && JSON.parse(atts[1]) === true){
+      node.classList.add(hiddenBorderClassName)
+    }
+    return node
   }
 
   format() {}

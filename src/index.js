@@ -9,6 +9,7 @@ import TableTrick from './js/TableTrick';
 import TableSelection from './js/TableSelection';
 import TableToolbar from './js/TableToolbar';
 import './css/quill.table.css';
+import { hiddenBorderClassName } from './js/TableTrick';
 let Container = Quill.import('blots/container');
 
 const Parchment = Quill.import('parchment');
@@ -111,7 +112,8 @@ export default class TableModule {
           node.getAttribute('cell_id'),
           node.getAttribute('merge_id'),
           node.getAttribute('colspan'),
-          node.getAttribute('rowspan')
+          node.getAttribute('rowspan'),
+          tableNode.classList.contains(hiddenBorderClassName) //is the table hidden?
         ].join('|')
       }));
     });
