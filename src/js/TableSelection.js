@@ -155,6 +155,16 @@ class TableSelection {
       quill.table.isInTable = true;
       TableToolbar.enable(quill, ['append-row*', 'append-col*', 'remove-cell', 'remove-row', 'remove-col', 'remove-table']);
     }
+
+    let cursoredSelection = quill.getSelection();
+    if (isInTable && quill.table.isInTable && cursoredSelection) { //we are in table with a cursoredSelection
+      const [cursoredElement] = quill.getLine(cursoredSelection.index);
+      let cursoredTable = cursoredElement.domNode.closest('table');
+      if (cursoredTable){
+        TableToolbar.enable(quill, [cursoredTable.classList.contains(hiddenBorderClassName)?'show-border':'hide-border']);
+        TableToolbar.disable(quill, [!cursoredTable.classList.contains(hiddenBorderClassName)?'show-border':'hide-border']);   
+      }
+    }
   }
 
   static getSelectionCoords() {
