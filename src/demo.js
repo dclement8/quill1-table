@@ -85,7 +85,7 @@ const quill = new Quill(document.getElementById('quillContainer'), {
         },
         selectAll: {
           key: 'a',
-          ctrlKey: true,
+          shortKey: true,
           handler: function (range, keycontext) {
             return TableModule.keyboardHandler(this.quill, 'selectAll', range, keycontext);
           }
@@ -103,14 +103,14 @@ const quill = new Quill(document.getElementById('quillContainer'), {
           }
         },
         undo: {
-          ctrlKey: true,
+          shortKey: true,
           key: 'z',
           handler: function (range, keycontext) {
             return TableModule.keyboardHandler(this.quill, 'undo', range, keycontext);
           }
         },
         redo: {
-          ctrlKey: true,
+          shortKey: true,
           shiftKey: true,
           key: 'z',
           handler: function (range, keycontext) {
@@ -118,7 +118,7 @@ const quill = new Quill(document.getElementById('quillContainer'), {
           }
         },
         copy: {
-          ctrlKey: true,
+          shortKey: true,
           key: 'c',
           handler: function (range, keycontext) {
             return TableModule.keyboardHandler(this.quill, 'copy', range, keycontext);

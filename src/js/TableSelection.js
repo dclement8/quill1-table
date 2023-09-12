@@ -25,7 +25,7 @@ class TableSelection {
 
     TableSelection.resetSelection();
 
-    if ((!TableSelection.cellSelectionOnClick && e.ctrlKey) || TableSelection.cellSelectionOnClick){
+    if ((!TableSelection.cellSelectionOnClick && e.shortKey) || TableSelection.cellSelectionOnClick){
       TableSelection.isMouseDown = true;
       // reset cell selection
       TableSelection.previousSelection = [TableSelection.selectionStartElement, TableSelection.selectionEndElement];

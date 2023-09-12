@@ -15,17 +15,18 @@ Code of quill is included in project so we can easily play with it in our tests.
 
 ## Features
 
-* Add or remove a table/column/row/cell
-* ctrl+z/ctrl+shift+z (undo/redo)
-* select a cell or multiple cells
-* split/merge cell
-* remove cell/selection
-* copy/paste a table
-* add col/row before/after
-* copy & paste table from Word
-* tabbing between cells
-* select all cell content
-* cell selection on click or with CTRL key
+- Add or remove a table/column/row/cell
+- ctrl+z/ctrl+shift+z or cmd+z/cmd+shift+z on Mac (undo/redo)
+- select a cell or multiple cells
+- split/merge cell
+- remove cell/selection
+- copy/paste a table
+- add col/row before/after
+- copy & paste table from Word
+- tabbing between cells
+- select all cell content
+- cell selection on click or with CTRL key (or CMD on Mac)
+- show/hide table border
 
 ## Usage
 
@@ -86,14 +87,14 @@ modules: {
         }
       },
       undo: {
-        ctrlKey: true,
+        shortKey: true,
         key: 'z',
         handler: function (range, keycontext) {
           return TableModule.keyboardHandler(this.quill, 'undo', range, keycontext);
         }
       },
       redo: {
-        ctrlKey: true,
+        shortKey: true,
         shiftKey: true,
         key: 'z',
         handler: function (range, keycontext) {
@@ -110,6 +111,7 @@ modules: {
 see [CHANGELOG.md](../master/CHANGELOG.md)
 
 ### For development
+
 ```shell script
 npm install
 
