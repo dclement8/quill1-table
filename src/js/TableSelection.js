@@ -22,15 +22,14 @@ class TableSelection {
       // do nothing with center or right click
       return;
     }
-
+    
+    // reset cell selection, even if it is cursor click, keeps everyone in check
+    TableSelection.previousSelection = [TableSelection.selectionStartElement, TableSelection.selectionEndElement];
+    TableSelection.selectionStartElement = TableSelection.selectionEndElement = null;
     TableSelection.resetSelection();
 
     if ((!TableSelection.cellSelectionOnClick && e.shortKey) || TableSelection.cellSelectionOnClick){
       TableSelection.isMouseDown = true;
-      // reset cell selection
-      TableSelection.previousSelection = [TableSelection.selectionStartElement, TableSelection.selectionEndElement];
-      TableSelection.selectionStartElement = TableSelection.selectionEndElement = null;
-      TableSelection.resetSelection();
 
       const targetCell = TableSelection.getTargetCell(e);
       if (!targetCell) {
@@ -154,6 +153,19 @@ class TableSelection {
       // enable
       quill.table.isInTable = true;
       TableToolbar.enable(quill, ['append-row*', 'append-col*', 'remove-cell', 'remove-row', 'remove-col', 'remove-table']);
+    }
+
+    if (isInTable && quill.table.isInTable){ //we are in a table, are we cursored?
+      let cursoredSelection = quill.getSelection();
+
+      if (cursoredSelection) { //we are in table with a cursoredSelection
+        const [cursoredElement] = quill.getLine(cursoredSelection.index);
+        let cursoredTable = cursoredElement.domNode.closest('table');
+        if (cursoredTable){
+          TableToolbar.enable(quill, [cursoredTable.classList.contains(hiddenBorderClassName)?'show-border':'hide-border']);
+          TableToolbar.disable(quill, [!cursoredTable.classList.contains(hiddenBorderClassName)?'show-border':'hide-border']);   
+        }
+      }
     }
   }
 
