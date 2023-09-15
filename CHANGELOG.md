@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.7.1] - 2023-09-15
+
+- Allow show/hide table border when cursored within a table and selection adjustments <https://github.com/dclement8/quill1-table/pull/13> by [@cfonseca88](https://github.com/cfonseca88)
+
 ## [1.7.0] - 2023-09-12
 
 - Show/hide table border <https://github.com/dclement8/quill1-table/pull/12> by [@cfonseca88](https://github.com/cfonseca88)
@@ -65,7 +69,8 @@ All notable changes to this project will be documented in this file.
 - TableHistory.undo and TableHistory.redo need quill instance as first argument (and change id as second argument)
 - TableSelection.mouseDown, TableSelection.mouseMove, TableSelection.mouseUp and TableSelection.selectionChange need quill instance as first argument
 
-[Unreleased]: https://github.com/dclement8/quill1-table/compare/1.7.0...HEAD
+[Unreleased]: https://github.com/dclement8/quill1-table/compare/1.7.1...HEAD
+[1.7.1]: https://github.com/dclement8/quill1-table/compare/1.7.0...1.7.1
 [1.7.0]: https://github.com/dclement8/quill1-table/compare/1.6.5...1.7.0
 [1.6.5]: https://github.com/dclement8/quill1-table/compare/1.6.4...1.6.5
 [1.6.4]: https://github.com/dclement8/quill1-table/compare/1.6.3...1.6.4

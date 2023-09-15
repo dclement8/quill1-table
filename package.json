@@ -1,6 +1,6 @@
 {
   "name": "quill1-table",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "description": "Table functionality for quilljs. Forked from https://github.com/acatec/quill-table-tbf which is a fork of original https://github.com/dost/quilljs-table",
   "main": "dist/quill1-table.js",
   "types": "src/index.d.ts",
