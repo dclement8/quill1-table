@@ -77,6 +77,14 @@
   font-size: 14px;
 }
 
+.ql-bubble .ql-toolbar .ql-picker.ql-table .ql-picker-label {
+  color: #ccc;
+}
+
+.ql-bubble .ql-toolbar .ql-picker.ql-table .ql-picker-label:hover {
+  color: #fff;
+}
+
 .ql-picker.ql-table:nth-of-type(1) .ql-picker-label::before {
   content: "\f0ce";
 }
@@ -217,12 +225,30 @@
   color: #444;
 }
 
+.ql-bubble .ql-picker.ql-table:nth-of-type(1) .ql-picker-item {
+  border: 1px solid #ccc;
+  color: #ccc;
+}
+
+.ql-bubble .ql-picker.ql-table:nth-of-type(1) .ql-picker-item:hover {
+  border: 1px solid #fff;
+  color: #fff;
+}
+
 .ql-table:nth-of-type(2) .ql-picker-label.ql-active {
   color: #444 !important;
 }
 
 .ql-toolbar .ql-picker-item.ql-selected:before, .ql-picker.ql-table:nth-of-type(2) .ql-picker-item {
   color: #444;
+}
+
+.ql-bubble .ql-toolbar .ql-picker-item.ql-selected:before, .ql-bubble .ql-picker.ql-table:nth-of-type(2) .ql-picker-item {
+  color: #ccc;
+}
+
+.ql-bubble .ql-picker.ql-table:nth-of-type(2) .ql-picker-item:hover {
+  color: #fff;
 }
 
 .ql-picker-label.ql-active .ql-stroke {

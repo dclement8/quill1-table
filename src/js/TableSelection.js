@@ -11,14 +11,14 @@ class TableSelection {
   static dblClickTimeout = null;
   static clickedCellTimeout = null;
   static preventMouseDown = true;
-  static cellSelectionOnClick = true
+  static cellSelectionOnClick = true;
 
   static mouseDown(quill, e, inCellSelectionOnClick) {
-    if (inCellSelectionOnClick !== undefined){ //we may have no options set for onClick
+    if (inCellSelectionOnClick !== undefined) { // we may have no options set for onClick
       TableSelection.cellSelectionOnClick = inCellSelectionOnClick;
     }
 
-    if (e.which !== 1) {
+    if (e.which !== 1 || (quill.container.classList.contains('ql-bubble') && TableSelection.isInsideToolbar(e))) {
       // do nothing with center or right click
       return;
     }
@@ -28,7 +28,7 @@ class TableSelection {
     TableSelection.selectionStartElement = TableSelection.selectionEndElement = null;
     TableSelection.resetSelection();
 
-    if ((!TableSelection.cellSelectionOnClick && e.shortKey) || TableSelection.cellSelectionOnClick){
+    if ((!TableSelection.cellSelectionOnClick && (e.ctrlKey || e.metaKey)) || TableSelection.cellSelectionOnClick) {
       TableSelection.isMouseDown = true;
 
       const targetCell = TableSelection.getTargetCell(e);
@@ -214,6 +214,10 @@ class TableSelection {
       element = element.parentNode;
     } while (element && element !== e.currentTarget);
     return cell;
+  }
+
+  static isInsideToolbar(e) {
+    return e.target.closest('.ql-toolbar');
   }
 
   static resetSelection(container) {

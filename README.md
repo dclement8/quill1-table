@@ -106,6 +106,17 @@ modules: {
 }
 ```
 
+If you use "bubble" theme, it is recommended to display the toolbar on single click, otherwise the selection cannot be kept.
+
+```
+quill.on('selection-change', range => {
+  if (range) {
+    quill.theme.tooltip.show();
+    quill.theme.tooltip.position(quill.getBounds(range));
+  }
+});
+```
+
 ## Changelog
 
 see [CHANGELOG.md](../master/CHANGELOG.md)
